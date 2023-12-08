@@ -1,0 +1,52 @@
+{% extends 'Base/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <style>
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+    </style>
+    <h1 class="display-3">Empleados</h1>
+    <hr>
+    <a href="{% url 'home' %}" class="back-button">Volver a Inicio</a>
+    <a class="btn btn-primary" role="button" href="{% url 'empleado_form' %}">Agregar</a>
+    <hr>
+
+    {% if not object_list %}
+    <h1>No hay registro de Empleados</h1>
+    <br><br><br><br><br><br><br><br>
+    {% else %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td>Rut</td>
+                <td>Nombre</td>
+                <td>Cargo</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for empleado in object_list %}
+            <tr>
+                <td>{{ empleado.rut }}</td>
+                <td>{{ empleado.nombre }}</td>
+                <td>{{ empleado.cargo }}</td>
+                <td>
+                    <a class="btn btn-primary" href="{% url 'empleado_update' pk=empleado.pk %}">Editar</a>
+                    <a class="btn btn-danger" href="{% url 'empleado_borrar' pk=empleado.pk %}">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+{% endblock %}
+

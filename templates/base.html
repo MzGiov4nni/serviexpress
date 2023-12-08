@@ -1,0 +1,111 @@
+<!-- base.html -->
+{% load static %}
+<html>
+
+<head>
+    <title>{% block title %}{% endblock title %}</title>
+    {% block css %} {% endblock css %}
+    <link rel="stylesheet" href="{% static 'css/estilos_base.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    {% block navbar %}
+    <div class="fondo">
+        <!-- Cabezera -->
+        <div class="container-fluid">
+            <div class="row align-items-center justify-content-between" id="header">
+                <img id="logo_serviexpress" class="col-12 col-sm-6 col-md-3" src="../static/img/serviexpress_logogrande.jpg"
+                    href="{% url 'home' %}" alt="logo">
+            </div>
+            <div class="inicio">
+                <br>
+                <h1>Taller Mecanico SERVIEXPRESS</h1>
+                <br>
+            </div>
+            {% block content %} {% endblock content %}
+            <div class="flex-container" id="container-botones">
+                {% if not user.is_authenticated %}
+                <div class="btnid">
+                    <a type="button" class="btn btn-primary btn-lg" href="{% url 'registrar_usuario' %}">Registrar</a>
+                    <br>
+                    <a type="button" class="btn btn-primary btn-lg" href="{% url 'login' %}">Iniciar sesión</a>
+                    <br>
+                    <a type="button" class="btn btn-primary btn-lg" href="{% url 'contacto' %}">Contacto</a>
+                </div>
+                {% endif %}
+                {% if user.is_authenticated %}
+                {% if user.is_superuser %}
+                <div class="btnid">
+                    <a type="button" class="btn btn-primary btn-lg" href="{% url 'empleado_list' %}">Empleados</a>
+                </div>
+                <div class="btnid">
+                    <a type="button" class="btn btn-primary btn-lg" href="{% url 'proveedor_list' %}">Proveedores</a>
+                </div>
+                <div class="btnid">
+                    <a type="button" class="btn btn-primary btn-lg" href="{% url 'servicio_list' %}">Servicios</a>
+                </div>
+                         
+                {% endif %}
+                <div class="btnid">
+                    <a type="button" class="btn btn-primary btn-lg" href="{% url 'hacer_reserva' %}">Reservar hora</a>
+                </div>
+                <div class="btnid">
+                    <a type="button" class="btn btn-primary btn-lg" href="{% url 'servicios_disponibles' %}">Servicios Disponibles</a>
+                </div>
+                <div class="btnid">
+                    <a type="button" class="btn btn-primary btn-lg" href="{% url 'logout' %}">Cerrar sesión</a>
+                </div>
+                {% endif %}
+                {% endblock %}
+            </div>
+            <br>
+            <br>
+            <!-- carrusel -->
+            <div class="slider">
+                <ul>
+                    <li><img src="../static/img/carrusel_foto.png" alt=""></li>
+                    <li><img src="../static/img/taller_carrusel2.png" alt=""></li>
+                    <li><img src="../static/img/taller_carrusel.png" alt=""></li>
+                </ul>
+            </div>
+            <br>
+            <br>
+            <!-- Footer -->
+            <footer class="page-footer font-small unique-color-dark pt-4">
+                <!-- Footer Links -->
+                <div class="container">
+
+                <!-- Call to action -->
+                <ul class="list-unstyled list-inline text-center py-2">
+                    <li class="list-inline-item" style="color:#ffffff">
+                        <h5 class="mb-1">Registrate!</h5>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="{% url 'registrar_usuario' %}" class="btn btn-light btn-rounded">Ingresa aquí!</a>
+                    </li>
+                </ul>
+                <!-- Call to action -->
+
+                <!-- Copyright -->
+                <div class="footer-copyright text-center py-3" style="color:#ffffff">© 2023 ServiExpress:
+                    <a href="{% url 'home' %}"> http://127.0.0.1:8000/</a>
+                </div>
+                <!-- Copyright -->
+
+            </footer>
+            <!-- Footer -->
+        </div>
+    </div>
+    </div>
+
+
+    {% block javascript %} {% endblock javascript %}
+</body>
+
+</html>
+
+
+
+

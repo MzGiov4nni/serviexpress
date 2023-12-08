@@ -1,0 +1,52 @@
+{% extends 'Base/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <style>
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+    </style>
+    <h1 class="display-3">Proveedores</h1>
+    <hr>
+    <a href="{% url 'home' %}" class="back-button">Volver a Inicio</a>
+    <a class="btn btn-primary" role="button" href="{% url 'proveedor_form' %}">Agregar</a>
+    <hr>
+
+    {% if not object_list %}
+    <h1>No hay registro de Proveedores</h1>
+    <br><br><br><br><br><br><br><br>
+    {% else %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td>Nombre</td>
+                <td>Contacto</td>
+                <td>Rubro</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for proveedor in object_list %}
+            <tr>
+                <td>{{ proveedor.nombre }}</td>
+                <td>{{ proveedor.contacto }}</td>
+                <td>{{ proveedor.rubro }}</td>
+                <td>
+                    <a class="btn btn-primary" href="{% url 'proveedor_update' pk=proveedor.pk %}">Editar</a>
+                    <a class="btn btn-danger" href="{% url 'proveedor_borrar' pk=proveedor.pk %}">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+{% endblock %}
+

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva de Hora</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+
+        section {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Reserva de Hora</h1>
+    </header>
+
+    <section>
+        <form action="procesar_reserva.php" method="post">
+
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="fecha" required>
+
+            <label for="hora">Hora:</label>
+            <select id="hora" name="hora" required>
+                <option value="09:00">09:00</option>
+                <option value="10:00">10:00</option>
+                <option value="11:00">11:00</option>
+            </select>
+
+            <label for="hora">Servicio:</label>
+            <select id="hora" name="hora" required>
+                <option>Inspeccion del vehiculo</option>
+                <option>Cambio de aceite</option>
+                <option>Cambio de Bateria</option>
+                <option>Cambio Neumatico</option>
+                <option>Inspeccion Caja de cambio</option>
+            </select>
+
+            <button type="submit">Reservar</button>
+        </form>
+        <!-- Botón para volver a la página principal -->
+        <a href="{% url 'home' %}" class="back-button">Volver a Inicio</a>
+    </section>
+
+</body>
+</html>

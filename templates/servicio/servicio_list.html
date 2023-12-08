@@ -1,0 +1,49 @@
+{% extends 'Base/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <style>
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+    </style>
+    <h1 class="display-3">Historial de Servicios</h1>
+    <hr>
+    <a href="{% url 'home' %}" class="back-button">Volver a Inicio</a>
+    <a class="btn btn-primary" role="button" href="{% url 'servicio_form' %}">Agregar</a>
+    <hr>
+
+    {% if not object_list %}
+    <h1>No hay registro de Servicios</h1>
+    <br><br><br><br><br><br><br><br>
+    {% else %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td>Nombre Usuario</td>
+                <td>Tipo de servicio</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for servicio in object_list %}
+            <tr>
+                <td>{{ servicio.nombre }}</td>
+                <td>{{ servicio.tipo }}</td>
+                <td>
+                    <a class="btn btn-primary" href="{% url 'servicio_update' pk=servicio.pk %}">Editar</a>
+                    <a class="btn btn-danger" href="{% url 'servicio_borrar' pk=servicio.pk %}">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+{% endblock %}

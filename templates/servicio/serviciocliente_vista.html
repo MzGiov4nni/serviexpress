@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios del Taller</title>
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Personalización de colores */
+        body {
+            background-color: #4C7DC4;
+            color: #fff;
+            padding-top: 50px; /* Para compensar el espacio del navbar */
+        }
+        .card {
+            background-color: #333;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        /* Ajustes para la imagen */
+        .card-img-top {
+            height: 200px; /* Altura deseada */
+            object-fit: cover; /* Para mantener la relación de aspecto */
+        }
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="fondo">
+        <div class="container-fluid">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-12 col-sm-6 col-md-3 text-center">
+                    <img id="logo_serviexpress" class="img-fluid" src="../static/img/serviexpress_logogrande.jpg" href="{% url 'home' %}" alt="logo">
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div class="text-center"> 
+        <a href="{% url 'home' %}" class="back-button">Volver a Inicio</a>
+    </div>
+
+    <br>
+    <br>
+    <!-- Contenedor principal -->
+    <div class="container">
+        <div class="row">
+            <!-- Servicio 1 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card">
+                    <img src="../static/images/servicios/inspeccion.png" class="card-img-top" alt="Servicio 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Inspeccion del Vehiculo</h5>
+                        <p class="card-text">Precio: $50.000</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Servicio 2 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card">
+                    <img src="../static/images/servicios/cambioneumatico.jpeg" class="card-img-top" alt="Servicio 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Cambio de Neumaticos</h5>
+                        <p class="card-text">Precio: $70.000</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Servicio 3 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card">
+                    <img src="../static/images/servicios/cambiobateria.jpg" class="card-img-top" alt="Servicio 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Cambio de Bateria</h5>
+                        <p class="card-text">Precio: $120.000</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Servicio 4 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card">
+                    <img src="../static/images/servicios/cajadecambio.jpeg" class="card-img-top" alt="Servicio 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Revision de caja de cambios</h5>
+                        <p class="card-text">Precio: $80.000</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Servicio 5 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card">
+                    <img src="../static/images/servicios/cambioaceite.jpg" class="card-img-top" alt="Servicio 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Cambio de Aceite</h5>
+                        <p class="card-text">Precio: $75.000</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
